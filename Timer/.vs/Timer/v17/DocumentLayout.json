@@ -1,34 +1,30 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "C:\\Users\\draga\\Documents\\OIB\\projekat\\Timer\\",
+  "WorkspaceRootPath": "C:\\Users\\draga\\Documents\\OIB\\projekat\\oib-Timer\\Timer\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{C2A6E33F-4865-4013-8FF7-77C96EE2C1CC}|TimerService\\TimerService.csproj|c:\\users\\draga\\documents\\oib\\projekat\\timer\\timerservice\\timerservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{C2A6E33F-4865-4013-8FF7-77C96EE2C1CC}|TimerService\\TimerService.csproj|C:\\Users\\draga\\Documents\\OIB\\projekat\\oib-Timer\\Timer\\timerservice\\timerservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{C2A6E33F-4865-4013-8FF7-77C96EE2C1CC}|TimerService\\TimerService.csproj|solutionrelative:timerservice\\timerservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{4CAF421A-C27B-4833-A8B5-D38015F637EC}|Contracts\\Contracts.csproj|C:\\Users\\draga\\Documents\\OIB\\projekat\\Timer\\contracts\\itimerservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{4CAF421A-C27B-4833-A8B5-D38015F637EC}|Contracts\\Contracts.csproj|solutionrelative:contracts\\itimerservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{24352D8A-D418-45B8-A148-B5D2FACF0494}|Client\\Client.csproj|C:\\Users\\draga\\Documents\\OIB\\projekat\\Timer\\client\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{24352D8A-D418-45B8-A148-B5D2FACF0494}|Client\\Client.csproj|solutionrelative:client\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{24352D8A-D418-45B8-A148-B5D2FACF0494}|Client\\Client.csproj|c:\\users\\draga\\documents\\oib\\projekat\\timer\\client\\clientproxy.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{24352D8A-D418-45B8-A148-B5D2FACF0494}|Client\\Client.csproj|c:\\users\\draga\\documents\\oib\\projekat\\oib-timer\\timer\\client\\clientproxy.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{24352D8A-D418-45B8-A148-B5D2FACF0494}|Client\\Client.csproj|solutionrelative:client\\clientproxy.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{C2A6E33F-4865-4013-8FF7-77C96EE2C1CC}|TimerService\\TimerService.csproj|C:\\Users\\draga\\Documents\\OIB\\projekat\\Timer\\timerservice\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{24352D8A-D418-45B8-A148-B5D2FACF0494}|Client\\Client.csproj|C:\\Users\\draga\\Documents\\OIB\\projekat\\oib-Timer\\Timer\\client\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{24352D8A-D418-45B8-A148-B5D2FACF0494}|Client\\Client.csproj|solutionrelative:client\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C2A6E33F-4865-4013-8FF7-77C96EE2C1CC}|TimerService\\TimerService.csproj|C:\\Users\\draga\\Documents\\OIB\\projekat\\oib-Timer\\Timer\\timerservice\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{C2A6E33F-4865-4013-8FF7-77C96EE2C1CC}|TimerService\\TimerService.csproj|solutionrelative:timerservice\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{DCE3EC04-921C-4BC8-900C-8C0BFF9D1754}|Manager\\Manager.csproj|c:\\users\\draga\\documents\\oib\\projekat\\timer\\manager\\formatter.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{DCE3EC04-921C-4BC8-900C-8C0BFF9D1754}|Manager\\Manager.csproj|solutionrelative:manager\\formatter.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{4CAF421A-C27B-4833-A8B5-D38015F637EC}|Contracts\\Contracts.csproj|C:\\Users\\draga\\Documents\\OIB\\projekat\\oib-Timer\\Timer\\contracts\\itimerservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{4CAF421A-C27B-4833-A8B5-D38015F637EC}|Contracts\\Contracts.csproj|solutionrelative:contracts\\itimerservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{4CAF421A-C27B-4833-A8B5-D38015F637EC}|Contracts\\Contracts.csproj|C:\\Users\\draga\\Documents\\OIB\\projekat\\Timer\\contracts\\user.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{4CAF421A-C27B-4833-A8B5-D38015F637EC}|Contracts\\Contracts.csproj|solutionrelative:contracts\\user.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{DCE3EC04-921C-4BC8-900C-8C0BFF9D1754}|Manager\\Manager.csproj|C:\\Users\\draga\\Documents\\OIB\\projekat\\oib-Timer\\Timer\\manager\\formatter.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{DCE3EC04-921C-4BC8-900C-8C0BFF9D1754}|Manager\\Manager.csproj|solutionrelative:manager\\formatter.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -38,17 +34,17 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 5,
+          "SelectedChildIndex": 4,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 1,
               "Title": "ClientProxy.cs",
-              "DocumentMoniker": "C:\\Users\\draga\\Documents\\OIB\\projekat\\Timer\\Client\\ClientProxy.cs",
+              "DocumentMoniker": "C:\\Users\\draga\\Documents\\OIB\\projekat\\oib-Timer\\Timer\\Client\\ClientProxy.cs",
               "RelativeDocumentMoniker": "Client\\ClientProxy.cs",
-              "ToolTip": "C:\\Users\\draga\\Documents\\OIB\\projekat\\Timer\\Client\\ClientProxy.cs",
+              "ToolTip": "C:\\Users\\draga\\Documents\\OIB\\projekat\\oib-Timer\\Timer\\Client\\ClientProxy.cs",
               "RelativeToolTip": "Client\\ClientProxy.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAADIAAAAJAAAAAAAAAA==",
+              "ViewState": "AgIAAAsAAAAAAAAAAAAYwBgAAAANAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-12-16T20:49:29.641Z",
               "EditorCaption": ""
@@ -57,78 +53,62 @@
               "$type": "Document",
               "DocumentIndex": 5,
               "Title": "Formatter.cs",
-              "DocumentMoniker": "C:\\Users\\draga\\Documents\\OIB\\projekat\\Timer\\Manager\\Formatter.cs",
+              "DocumentMoniker": "C:\\Users\\draga\\Documents\\OIB\\projekat\\oib-Timer\\Timer\\Manager\\Formatter.cs",
               "RelativeDocumentMoniker": "Manager\\Formatter.cs",
-              "ToolTip": "C:\\Users\\draga\\Documents\\OIB\\projekat\\Timer\\Manager\\Formatter.cs",
+              "ToolTip": "C:\\Users\\draga\\Documents\\OIB\\projekat\\oib-Timer\\Timer\\Manager\\Formatter.cs",
               "RelativeToolTip": "Manager\\Formatter.cs",
               "ViewState": "AgIAAAMAAAAAAAAAAAAAABoAAAANAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-16T20:44:14.068Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-12-16T20:44:14.068Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
-              "Title": "User.cs",
-              "DocumentMoniker": "C:\\Users\\draga\\Documents\\OIB\\projekat\\Timer\\Contracts\\User.cs",
-              "RelativeDocumentMoniker": "Contracts\\User.cs",
-              "ToolTip": "C:\\Users\\draga\\Documents\\OIB\\projekat\\Timer\\Contracts\\User.cs",
-              "RelativeToolTip": "Contracts\\User.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABMAAAAIAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-11T13:21:13.257Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 4,
               "Title": "ITimerService.cs",
-              "DocumentMoniker": "C:\\Users\\draga\\Documents\\OIB\\projekat\\Timer\\Contracts\\ITimerService.cs",
+              "DocumentMoniker": "C:\\Users\\draga\\Documents\\OIB\\projekat\\oib-Timer\\Timer\\Contracts\\ITimerService.cs",
               "RelativeDocumentMoniker": "Contracts\\ITimerService.cs",
-              "ToolTip": "C:\\Users\\draga\\Documents\\OIB\\projekat\\Timer\\Contracts\\ITimerService.cs",
+              "ToolTip": "C:\\Users\\draga\\Documents\\OIB\\projekat\\oib-Timer\\Timer\\Contracts\\ITimerService.cs",
               "RelativeToolTip": "Contracts\\ITimerService.cs",
-              "ViewState": "AgIAAAYAAAAAAAAAAAAAAA0AAAA3AAAAAAAAAA==",
+              "ViewState": "AgIAAAYAAAAAAAAAAAAAAA0AAAAhAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-11T12:18:10.282Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-12-11T12:18:10.282Z"
             },
             {
               "$type": "Document",
               "DocumentIndex": 2,
               "Title": "Program.cs",
-              "DocumentMoniker": "C:\\Users\\draga\\Documents\\OIB\\projekat\\Timer\\Client\\Program.cs",
+              "DocumentMoniker": "C:\\Users\\draga\\Documents\\OIB\\projekat\\oib-Timer\\Timer\\Client\\Program.cs",
               "RelativeDocumentMoniker": "Client\\Program.cs",
-              "ToolTip": "C:\\Users\\draga\\Documents\\OIB\\projekat\\Timer\\Client\\Program.cs",
+              "ToolTip": "C:\\Users\\draga\\Documents\\OIB\\projekat\\oib-Timer\\Timer\\Client\\Program.cs",
               "RelativeToolTip": "Client\\Program.cs",
-              "ViewState": "AgIAAAsAAAAAAAAAAAAzwBsAAAAoAAAAAAAAAA==",
+              "ViewState": "AgIAAAkAAAAAAAAAAAAqwBMAAAA7AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-11T12:12:23.576Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-12-11T12:12:23.576Z"
             },
             {
               "$type": "Document",
               "DocumentIndex": 0,
               "Title": "TimerService.cs",
-              "DocumentMoniker": "C:\\Users\\draga\\Documents\\OIB\\projekat\\Timer\\TimerService\\TimerService.cs",
+              "DocumentMoniker": "C:\\Users\\draga\\Documents\\OIB\\projekat\\oib-Timer\\Timer\\TimerService\\TimerService.cs",
               "RelativeDocumentMoniker": "TimerService\\TimerService.cs",
-              "ToolTip": "C:\\Users\\draga\\Documents\\OIB\\projekat\\Timer\\TimerService\\TimerService.cs",
+              "ToolTip": "C:\\Users\\draga\\Documents\\OIB\\projekat\\oib-Timer\\Timer\\TimerService\\TimerService.cs",
               "RelativeToolTip": "TimerService\\TimerService.cs",
-              "ViewState": "AgIAADYAAAAAAAAAAAAUwEAAAAAJAAAAAAAAAA==",
+              "ViewState": "AgIAAA8AAAAAAAAAAAAYwBoAAAAyAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-12-11T12:10:01.472Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 3,
               "Title": "Program.cs",
-              "DocumentMoniker": "C:\\Users\\draga\\Documents\\OIB\\projekat\\Timer\\TimerService\\Program.cs",
+              "DocumentMoniker": "C:\\Users\\draga\\Documents\\OIB\\projekat\\oib-Timer\\Timer\\TimerService\\Program.cs",
               "RelativeDocumentMoniker": "TimerService\\Program.cs",
-              "ToolTip": "C:\\Users\\draga\\Documents\\OIB\\projekat\\Timer\\TimerService\\Program.cs",
+              "ToolTip": "C:\\Users\\draga\\Documents\\OIB\\projekat\\oib-Timer\\Timer\\TimerService\\Program.cs",
               "RelativeToolTip": "TimerService\\Program.cs",
-              "ViewState": "AgIAAA4AAAAAAAAAAAAYwCIAAAAfAAAAAAAAAA==",
+              "ViewState": "AgIAAAwAAAAAAAAAAAAAACIAAAAfAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-11T12:09:34.196Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-12-11T12:09:34.196Z"
             }
           ]
         }

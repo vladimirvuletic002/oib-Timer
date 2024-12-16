@@ -11,8 +11,8 @@ namespace Contracts
     public interface ITimerService
     {
         [OperationContract]
-        void AddUser(string username, string password);
-
+        void TestCommunication();
+        
         /// <summary>
         /// Pokrece tajmer. Zahteva StartStop permisiju.
         /// </summary>

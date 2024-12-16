@@ -17,16 +17,15 @@ namespace Client
             factory = this.CreateChannel();
         }
 
-        public void AddUser(string username, string password)
+        public void TestCommunication()
         {
-
             try
             {
-                factory.AddUser(username, password);
+                factory.TestCommunication();
             }
             catch (Exception e)
             {
-                Console.WriteLine("Error: {0}", e.Message);
+                Console.WriteLine("[TestCommunication] ERROR = {0}", e.Message);
             }
         }
 
