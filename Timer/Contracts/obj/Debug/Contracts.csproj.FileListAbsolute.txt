@@ -1,0 +1,6 @@
+C:\Users\draga\Documents\OIB\projekat\Timer\Contracts\bin\Debug\Contracts.dll
+C:\Users\draga\Documents\OIB\projekat\Timer\Contracts\bin\Debug\Contracts.pdb
+C:\Users\draga\Documents\OIB\projekat\Timer\Contracts\obj\Debug\Contracts.csproj.AssemblyReference.cache
+C:\Users\draga\Documents\OIB\projekat\Timer\Contracts\obj\Debug\Contracts.csproj.CoreCompileInputs.cache
+C:\Users\draga\Documents\OIB\projekat\Timer\Contracts\obj\Debug\Contracts.dll
+C:\Users\draga\Documents\OIB\projekat\Timer\Contracts\obj\Debug\Contracts.pdb

@@ -1,0 +1,12 @@
+C:\Users\draga\Documents\OIB\projekat\Timer\Client\bin\Debug\Client.exe.config
+C:\Users\draga\Documents\OIB\projekat\Timer\Client\bin\Debug\Client.exe
+C:\Users\draga\Documents\OIB\projekat\Timer\Client\bin\Debug\Client.pdb
+C:\Users\draga\Documents\OIB\projekat\Timer\Client\bin\Debug\Contracts.dll
+C:\Users\draga\Documents\OIB\projekat\Timer\Client\bin\Debug\Contracts.pdb
+C:\Users\draga\Documents\OIB\projekat\Timer\Client\obj\Debug\Client.csproj.AssemblyReference.cache
+C:\Users\draga\Documents\OIB\projekat\Timer\Client\obj\Debug\Client.csproj.CoreCompileInputs.cache
+C:\Users\draga\Documents\OIB\projekat\Timer\Client\obj\Debug\Client.csproj.Up2Date
+C:\Users\draga\Documents\OIB\projekat\Timer\Client\obj\Debug\Client.exe
+C:\Users\draga\Documents\OIB\projekat\Timer\Client\obj\Debug\Client.pdb
+C:\Users\draga\Documents\OIB\projekat\Timer\Client\bin\Debug\Manager.dll
+C:\Users\draga\Documents\OIB\projekat\Timer\Client\bin\Debug\Manager.pdb

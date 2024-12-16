@@ -1,0 +1,12 @@
+C:\Users\draga\Documents\OIB\projekat\Timer\TimerService\bin\Debug\TimerService.exe.config
+C:\Users\draga\Documents\OIB\projekat\Timer\TimerService\bin\Debug\TimerService.exe
+C:\Users\draga\Documents\OIB\projekat\Timer\TimerService\bin\Debug\TimerService.pdb
+C:\Users\draga\Documents\OIB\projekat\Timer\TimerService\bin\Debug\Contracts.dll
+C:\Users\draga\Documents\OIB\projekat\Timer\TimerService\bin\Debug\Contracts.pdb
+C:\Users\draga\Documents\OIB\projekat\Timer\TimerService\obj\Debug\TimerService.csproj.AssemblyReference.cache
+C:\Users\draga\Documents\OIB\projekat\Timer\TimerService\obj\Debug\TimerService.csproj.CoreCompileInputs.cache
+C:\Users\draga\Documents\OIB\projekat\Timer\TimerService\obj\Debug\TimerSer.78AF3A56.Up2Date
+C:\Users\draga\Documents\OIB\projekat\Timer\TimerService\obj\Debug\TimerService.exe
+C:\Users\draga\Documents\OIB\projekat\Timer\TimerService\obj\Debug\TimerService.pdb
+C:\Users\draga\Documents\OIB\projekat\Timer\TimerService\bin\Debug\Manager.dll
+C:\Users\draga\Documents\OIB\projekat\Timer\TimerService\bin\Debug\Manager.pdb
