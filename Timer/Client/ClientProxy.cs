@@ -34,31 +34,51 @@ namespace Client
 
         public void ResetTimer()
         {
-            throw new NotImplementedException();
+            try
+            {
+                factory.ResetTimer();
+            }
+            catch
+            {
+                Console.WriteLine("Nemate dozvolu za akciju pokretanja tajmera!");
+            }
         }
 
-        public void SetTimer(string encryptedTime)
+        public void SetTimer(string time)
         {
-            throw new NotImplementedException();
+            try
+            {
+                factory.SetTimer(time);
+            }
+            catch 
+            {
+                Console.WriteLine("Nemate dozvolu za akciju setovanja tajmera!");
+            }
         }
 
         public void StartTimer()
         {
             try
             {
-                Console.WriteLine("Pokretanje");
                 factory.StartTimer();
             }
-            catch
+            catch 
             {
-                Console.WriteLine("Nemate permisiju za pokretanje tajmera");
+                Console.WriteLine("Nemate dozvolu za akciju pokretanja tajmera!");
             }
         }
 
 
         public void StopTimer()
         {
-            throw new NotImplementedException();
+            try
+            {
+                factory.StopTimer();
+            }
+            catch 
+            {
+                Console.WriteLine("Nemate dozvolu za akciju zaustavljanja tajmera!");
+            }
         }
 
         public string AskForTime()
@@ -66,6 +86,39 @@ namespace Client
             throw new NotImplementedException();
 
         }
+        public bool IsTimerExpired()
+        {
+            try
+            {
+                return factory.IsTimerExpired();
+            }
+            catch
+            {
+                return false;
+            }
+        }
+        public void DisplayRemainingTime()
+        {
+            try
+            {
+                // Pozivamo metodu na serveru da dobijemo preostalo vreme
+                TimeSpan remainingTime = factory.GetRemainingTime();
+
+                if (remainingTime > TimeSpan.Zero)
+                {
+                    Console.WriteLine($"Preostalo vreme: {remainingTime.Minutes:D2}:{remainingTime.Seconds:D2}");
+                }
+                else
+                {
+                    Console.WriteLine("Tajmer je istekao.");
+                }
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine("Greška pri dobijanju preostalog vremena: " + e.Message);
+            }
+        }
+
         public void Dispose()
         {
             if (factory != null)
@@ -76,6 +129,9 @@ namespace Client
             this.Close();
         }
 
-        
+        public TimeSpan GetRemainingTime()
+        {
+            return factory.GetRemainingTime();
+        }
     }
 }

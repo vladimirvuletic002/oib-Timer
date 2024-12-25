@@ -37,7 +37,7 @@ namespace Contracts
         /// </summary>
         /// <param name="encryptedTime">sifrovano vreme.</param>
         [OperationContract]
-        void SetTimer(string encryptedTime);
+        void SetTimer(string time);
 
         /// <summary>
         /// Ocitava trenutno vreme na tajmeru. Zahteva Seek permisiju.
@@ -45,5 +45,11 @@ namespace Contracts
         /// <returns>Trenutno vreme tajmera.</returns>
         [OperationContract]
         string AskForTime();
+
+        [OperationContract]
+        bool IsTimerExpired();
+
+        [OperationContract]
+        TimeSpan GetRemainingTime();
     }
 }

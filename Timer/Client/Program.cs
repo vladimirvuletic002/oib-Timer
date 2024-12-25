@@ -26,9 +26,62 @@ namespace Client
             using (ClientProxy proxy = new ClientProxy(binding, address))
             {
                 proxy.TestCommunication();
+                Console.WriteLine("Unesite trajanje tajmera u formatu hh:mm:ss (npr. 00:02:00):");
+                string timeInput = Console.ReadLine();
+
+                proxy.SetTimer(timeInput);
+
+                // Pokretanje tajmera
+                Console.WriteLine("Pokrećemo tajmer...");
                 proxy.StartTimer();
+
+                // Čekanje korisničkog unosa za zaustavljanje
+                bool timerExpired = false;
+
+                Console.WriteLine("Pritisnite 'R' da resetujete tajmer ili enter da ga zaustavite u suprotnom tajmer se zaustavlja po isteku vremena");
+                while (!timerExpired)
+                {
+                    // Proveravamo preostalo vreme svakih 1 sekundi
+                    proxy.DisplayRemainingTime();
+
+                    // Ispisujemo i proveravamo preostalo vreme
+                    TimeSpan remainingTime = proxy.GetRemainingTime();
+
+                    // Ako je preostalo vreme 00:00, zaustavljamo tajmer
+                    if (remainingTime == TimeSpan.Zero)
+                    {
+                        Console.WriteLine("Tajmer je istekao");
+                        proxy.StopTimer();
+                        break; // Izađite iz petlje jer je tajmer istekao
+                    }
+
+                    // Provera korisničkog unosa za zaustavljanje tajmera
+                    if (Console.KeyAvailable)
+                    {
+                        var key = Console.ReadKey(true).Key;
+                        if (key == ConsoleKey.Enter)
+                        {
+                            Console.WriteLine("Tajmer je zaustavljen");
+                            proxy.StopTimer();
+                            break;
+                        }
+                        else if (key == ConsoleKey.R) // Pritiskom na 'R' pozivamo reset
+                        {
+                            Console.WriteLine("Tajmer je resetovan");
+                            proxy.ResetTimer();
+                            break;
+                        }
+                    }
+
+                    // Pauza od 1 sekunde
+                    Task.Delay(1000).Wait();
+                }
+
+
+
             }
 
+            Console.WriteLine("Kraj programa");
             Console.ReadLine();
         }
     }
