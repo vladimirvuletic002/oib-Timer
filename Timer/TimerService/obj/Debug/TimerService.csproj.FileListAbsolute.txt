@@ -22,3 +22,16 @@ C:\Users\draga\Documents\OIB\projekat\oib-Timer\Timer\TimerService\obj\Debug\Tim
 C:\Users\draga\Documents\OIB\projekat\oib-Timer\Timer\TimerService\obj\Debug\TimerSer.78AF3A56.Up2Date
 C:\Users\draga\Documents\OIB\projekat\oib-Timer\Timer\TimerService\obj\Debug\TimerService.exe
 C:\Users\draga\Documents\OIB\projekat\oib-Timer\Timer\TimerService\obj\Debug\TimerService.pdb
+C:\Users\38161\Desktop\oib\oib-Timer\Timer\TimerService\bin\Debug\TimerService.exe.config
+C:\Users\38161\Desktop\oib\oib-Timer\Timer\TimerService\bin\Debug\TimerService.exe
+C:\Users\38161\Desktop\oib\oib-Timer\Timer\TimerService\bin\Debug\TimerService.pdb
+C:\Users\38161\Desktop\oib\oib-Timer\Timer\TimerService\bin\Debug\Contracts.dll
+C:\Users\38161\Desktop\oib\oib-Timer\Timer\TimerService\bin\Debug\Manager.dll
+C:\Users\38161\Desktop\oib\oib-Timer\Timer\TimerService\bin\Debug\Contracts.pdb
+C:\Users\38161\Desktop\oib\oib-Timer\Timer\TimerService\bin\Debug\Manager.pdb
+C:\Users\38161\Desktop\oib\oib-Timer\Timer\TimerService\obj\Debug\TimerService.csproj.AssemblyReference.cache
+C:\Users\38161\Desktop\oib\oib-Timer\Timer\TimerService\obj\Debug\TimerService.csproj.SuggestedBindingRedirects.cache
+C:\Users\38161\Desktop\oib\oib-Timer\Timer\TimerService\obj\Debug\TimerService.csproj.CoreCompileInputs.cache
+C:\Users\38161\Desktop\oib\oib-Timer\Timer\TimerService\obj\Debug\TimerService.csproj.CopyComplete
+C:\Users\38161\Desktop\oib\oib-Timer\Timer\TimerService\obj\Debug\TimerService.exe
+C:\Users\38161\Desktop\oib\oib-Timer\Timer\TimerService\obj\Debug\TimerService.pdb

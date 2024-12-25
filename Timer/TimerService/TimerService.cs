@@ -1,7 +1,10 @@
 ﻿using Contracts;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
+using System.Security.Cryptography;
+using System.Security.Permissions;
 using System.Security.Principal;
 using System.Text;
 using System.Threading;
@@ -32,30 +35,36 @@ namespace TimerService
                 Console.WriteLine(name);
             }
         }
-
+        [PrincipalPermission(SecurityAction.Demand, Role = "StartStop")]
         public void StartTimer()
         {
-            throw new NotImplementedException();
+            Console.WriteLine("testiranje uspesno");
         }
 
+        [PrincipalPermission(SecurityAction.Demand, Role = "StartStop")]
         public void StopTimer()
         {
             throw new NotImplementedException();
         }
 
+        [PrincipalPermission(SecurityAction.Demand, Role = "Change")]
         public void ResetTimer()
         {
             throw new NotImplementedException();
         }
 
+        [PrincipalPermission(SecurityAction.Demand, Role = "Change")]
         public void SetTimer(string encryptedTime)
         {
             throw new NotImplementedException();
+
         }
 
+        [PrincipalPermission(SecurityAction.Demand, Role = "See")]
         public string AskForTime()
         {
             throw new NotImplementedException();
+
         }
     }
 }

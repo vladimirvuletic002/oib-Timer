@@ -14,13 +14,16 @@ namespace Client
 
         public ClientProxy(NetTcpBinding binding, string address) : base(binding, address)
         {
+            Console.WriteLine("Creating channel...");
             factory = this.CreateChannel();
+            Console.WriteLine("Channel created.");
         }
 
         public void TestCommunication()
         {
             try
             {
+                Console.WriteLine("Calling TestCommunication...");
                 factory.TestCommunication();
             }
             catch (Exception e)
@@ -41,8 +44,17 @@ namespace Client
 
         public void StartTimer()
         {
-            throw new NotImplementedException();
+            try
+            {
+                Console.WriteLine("Pokretanje");
+                factory.StartTimer();
+            }
+            catch
+            {
+                Console.WriteLine("Nemate permisiju za pokretanje tajmera");
+            }
         }
+
 
         public void StopTimer()
         {
@@ -52,8 +64,8 @@ namespace Client
         public string AskForTime()
         {
             throw new NotImplementedException();
-        }
 
+        }
         public void Dispose()
         {
             if (factory != null)

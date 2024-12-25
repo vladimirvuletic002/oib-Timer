@@ -26,6 +26,7 @@ namespace Client
             using (ClientProxy proxy = new ClientProxy(binding, address))
             {
                 proxy.TestCommunication();
+                proxy.StartTimer();
             }
 
             Console.ReadLine();

@@ -4,3 +4,11 @@ C:\Users\draga\Documents\OIB\projekat\Timer\Manager\obj\Debug\Manager.csproj.Ass
 C:\Users\draga\Documents\OIB\projekat\Timer\Manager\obj\Debug\Manager.csproj.CoreCompileInputs.cache
 C:\Users\draga\Documents\OIB\projekat\Timer\Manager\obj\Debug\Manager.dll
 C:\Users\draga\Documents\OIB\projekat\Timer\Manager\obj\Debug\Manager.pdb
+C:\Users\38161\Desktop\oib\oib-Timer\Timer\Manager\bin\Debug\Manager.dll
+C:\Users\38161\Desktop\oib\oib-Timer\Timer\Manager\bin\Debug\Manager.pdb
+C:\Users\38161\Desktop\oib\oib-Timer\Timer\Manager\obj\Debug\Manager.csproj.AssemblyReference.cache
+C:\Users\38161\Desktop\oib\oib-Timer\Timer\Manager\obj\Debug\Manager.RolesConfigFile.resources
+C:\Users\38161\Desktop\oib\oib-Timer\Timer\Manager\obj\Debug\Manager.csproj.GenerateResource.cache
+C:\Users\38161\Desktop\oib\oib-Timer\Timer\Manager\obj\Debug\Manager.csproj.CoreCompileInputs.cache
+C:\Users\38161\Desktop\oib\oib-Timer\Timer\Manager\obj\Debug\Manager.dll
+C:\Users\38161\Desktop\oib\oib-Timer\Timer\Manager\obj\Debug\Manager.pdb
