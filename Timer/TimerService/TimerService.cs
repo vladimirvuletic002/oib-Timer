@@ -107,20 +107,64 @@ namespace TimerService
             Console.WriteLine($"Tajmer je resetovan. Trenutno vreme završetka: {endTime}");
         }
 
+        public static string Encrypt3DES(string plainText, byte[] key)
+        {
+            using (TripleDESCryptoServiceProvider tdes = new TripleDESCryptoServiceProvider())
+            {
+                tdes.Key = key;
+                tdes.Mode = CipherMode.ECB;
+                tdes.Padding = PaddingMode.PKCS7;
+
+                ICryptoTransform encryptor = tdes.CreateEncryptor();
+                byte[] inputBytes = Encoding.UTF8.GetBytes(plainText);
+                byte[] encryptedBytes = encryptor.TransformFinalBlock(inputBytes, 0, inputBytes.Length);
+
+                return Convert.ToBase64String(encryptedBytes);
+            }
+        }
+
+        public static string Decrypt3DES(string encryptedText, byte[] key)
+        {
+            using (TripleDESCryptoServiceProvider tdes = new TripleDESCryptoServiceProvider())
+            {
+                tdes.Key = key;
+                tdes.Mode = CipherMode.ECB;
+                tdes.Padding = PaddingMode.PKCS7;
+
+                ICryptoTransform decryptor = tdes.CreateDecryptor();
+                byte[] inputBytes = Convert.FromBase64String(encryptedText);
+                byte[] decryptedBytes = decryptor.TransformFinalBlock(inputBytes, 0, inputBytes.Length);
+
+                return Encoding.UTF8.GetString(decryptedBytes);
+            }
+        }
+
         [PrincipalPermission(SecurityAction.Demand, Role = "Change")]
-        public void SetTimer(string time)
+        public void SetTimer(string inputTime)
         {
             try
             {
-                if (TimeSpan.TryParse(time, out TimeSpan duration) && duration > TimeSpan.Zero)
+                byte[] key = Encoding.UTF8.GetBytes("OvoJeVrloTajniKljuc1234");
+
+                if (key.Length != 24)
+                {
+                    Array.Resize(ref key, 24);
+                }
+
+                string encryptedTime = Encrypt3DES(inputTime, key);
+                Console.WriteLine($"Enkodovano vreme: {encryptedTime}");
+
+                string decryptedTime = Decrypt3DES(encryptedTime, key);
+
+                if (TimeSpan.TryParse(decryptedTime, out TimeSpan duration) && duration > TimeSpan.Zero)
                 {
                     endTime = DateTime.Now.Add(duration);
-                    isTimerSet = true; // Obeležavamo da je tajmer validno postavljen
-                    Console.WriteLine($"Tajmer je postavljen na {duration.TotalMinutes} minuta. Završava se u {endTime}.");
+                    isTimerSet = true; 
+                    Console.WriteLine($"Tajmer je postavljen na {duration}. Završava se u {endTime}.");
                 }
                 else
                 {
-                    isTimerSet= false;
+                    isTimerSet = false;
                     Console.WriteLine("Uneta vrednost za tajmer nije validna.");
                 }
             }
@@ -130,16 +174,21 @@ namespace TimerService
             }
         }
 
+
+
         [PrincipalPermission(SecurityAction.Demand, Role = "See")]
         public string AskForTime()
         {
-            throw new NotImplementedException();
-
+            return GetRemainingTime().ToString();
         }
 
         private void OnTimerTick(object sender, EventArgs e)
         {
-            Console.WriteLine($"Tick: {DateTime.Now} - Kraj: {endTime}");
+            Console.Clear();
+
+            // Ispisivanje preostalog vremena
+            Console.WriteLine($"Preostalo vreme: {GetRemainingTime()}");
+
             if (DateTime.Now >= endTime)
             {
                 dispatcherTimer.Stop();

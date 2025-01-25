@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Security.Cryptography;
 using System.Threading.Tasks;
 using System.ServiceModel;
 using Contracts;
@@ -44,11 +45,17 @@ namespace Client
             }
         }
 
+
         public void SetTimer(string time)
         {
             try
             {
                 factory.SetTimer(time);
+                if (TimeSpan.TryParse(time, out TimeSpan duration) && duration > TimeSpan.Zero)
+                {
+                    DateTime endTime = DateTime.Now.Add(duration);
+                    Console.WriteLine($"Tajmer je postavljen na {duration}.");
+                }
             }
             catch 
             {
@@ -83,7 +90,8 @@ namespace Client
 
         public string AskForTime()
         {
-            throw new NotImplementedException();
+            string remainingTime = factory.GetRemainingTime().ToString(@"hh\:mm\:ss");
+            return remainingTime;
 
         }
         public bool IsTimerExpired()
@@ -101,7 +109,6 @@ namespace Client
         {
             try
             {
-                // Pozivamo metodu na serveru da dobijemo preostalo vreme
                 TimeSpan remainingTime = factory.GetRemainingTime();
 
                 if (remainingTime > TimeSpan.Zero)
