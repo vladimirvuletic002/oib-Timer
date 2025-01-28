@@ -51,5 +51,11 @@ namespace Contracts
 
         [OperationContract]
         TimeSpan GetRemainingTime();
+
+        [OperationContract]
+        bool IsTimerActive();
+
+        [OperationContract]
+        bool IsTimerSet();
     }
 }

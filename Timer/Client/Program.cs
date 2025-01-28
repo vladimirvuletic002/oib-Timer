@@ -54,11 +54,14 @@ namespace Client
                     {
                         case "Admin":
                             Console.WriteLine();
+                            Console.WriteLine("============================");
                             Console.WriteLine("1. Startuj tajmer");
-                            Console.WriteLine("2. Postavi tajmer");
-                            Console.WriteLine("3. Poništi tajmer");
-                            Console.WriteLine("4. Očitaj stanje tajmera");
+                            Console.WriteLine("2. Zaustavi tajmer");
+                            Console.WriteLine("3. Postavi tajmer");
+                            Console.WriteLine("4. Poništi tajmer");
+                            Console.WriteLine("5. Očitaj stanje tajmera");
                             Console.WriteLine("X. Izlaz");
+                            Console.WriteLine("============================");
 
                             do
                             {
@@ -66,15 +69,21 @@ namespace Client
                                 option = Console.ReadLine();
                                 option = option.ToUpper();
 
-                                if (option == "1" || option == "2" || option == "3" || option == "4" || option == "X")
+                                if (option == "1" || option == "2" || option == "3" || option == "4" || option == "5" || option == "X")
                                 {
                                     validOption = true;
                                     switch (option)
                                     {
                                         case "1":
                                             // traziti od korisnika da startuje tajmer ako je postavljen
+                                            proxy.StartTimer();
                                             break;
+
                                         case "2":
+                                            // traziti od korisnika da zaustavi(stopira) tajmer ako je pokrenut
+                                            proxy.StopTimer();
+                                            break;
+                                        case "3":
                                             // traziti od korisnika da postavi tajmer
                                             Console.WriteLine("Unesite trajanje tajmera u formatu hh:mm:ss (npr. 00:02:00):");
                                             timeInput = Console.ReadLine();
@@ -82,10 +91,18 @@ namespace Client
                                             // postavljanje tajmera
                                             proxy.SetTimer(timeInput);
                                             break;
-                                        case "3":
-                                            // pitati korisnika da li zeli da ponisti tajmer (y/n)
-                                            break;
                                         case "4":
+                                            // pitati korisnika da li zeli da ponisti tajmer (y/n)
+                                            Console.Write("Da li ste sigurni da želite da resetujete timer? (DA/NE): ");
+                                            string choice = Console.ReadLine().ToUpper();
+
+                                            if (choice.Equals("DA"))
+                                            {
+                                                proxy.ResetTimer();
+                                            }
+
+                                            break;
+                                        case "5":
                                             // prikazati trenutno vreme na tajmeru u momentu ocitavanja
                                             Console.WriteLine($"Preostalo vreme: {proxy.AskForTime()}");
                                             break;
@@ -108,10 +125,12 @@ namespace Client
 
                         case "Modifier":
                             Console.WriteLine();
+                            Console.WriteLine("============================");
                             Console.WriteLine("1. Postavi tajmer");
                             Console.WriteLine("2. Poništi tajmer");
                             Console.WriteLine("3. Očitaj stanje tajmera");
                             Console.WriteLine("X. Izlaz");
+                            Console.WriteLine("============================");
 
                             do
                             {
@@ -134,6 +153,13 @@ namespace Client
                                             break;
                                         case "2":
                                             // pitati korisnika da li zeli da ponisti tajmer (y/n)
+                                            Console.Write("Da li ste sigurni da želite da resetujete timer? (DA/NE): ");
+                                            string choice = Console.ReadLine().ToUpper();
+
+                                            if (choice.Equals("DA"))
+                                            {
+                                                proxy.ResetTimer();
+                                            }
                                             break;
                                         case "3":
                                             // prikazati trenutno vreme na tajmeru u momentu ocitavanja
@@ -157,8 +183,10 @@ namespace Client
 
                         case "Reader":
                             Console.WriteLine();
+                            Console.WriteLine("============================");
                             Console.WriteLine("1. Očitaj stanje tajmera");
                             Console.WriteLine("X. Izlaz");
+                            Console.WriteLine("============================");
 
                             do
                             {

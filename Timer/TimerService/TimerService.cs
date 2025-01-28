@@ -20,12 +20,15 @@ namespace TimerService
         private DispatcherTimer dispatcherTimer; // Tajmer za praćenje intervala
         private DateTime endTime; // Vreme završetka tajmera
         private bool isTimerSet; // Oznaka da li je tajmer postavljen
+        private TimeSpan timerDuration;
+        private bool isActive;
 
         public TimerService()
         {
             dispatcherTimer = new DispatcherTimer();
             dispatcherTimer.Tick += OnTimerTick; // Event handler za Tick događaj
             isTimerSet = false; // Tajmer nije postavljen prilikom inicijalizacije
+            isActive = false;
         }
         public void TestCommunication()
         {
@@ -66,6 +69,10 @@ namespace TimerService
             dispatcherTimer.Interval = TimeSpan.FromSeconds(1); // Tick interval
             dispatcherTimer.Start();
 
+            isActive = true;
+
+            endTime = DateTime.Now.Add(timerDuration);
+
             if (dispatcherTimer.IsEnabled)
             {
                 Console.WriteLine($"Tajmer je pokrenut. Završava se u {endTime}.");
@@ -85,8 +92,15 @@ namespace TimerService
                 return;
             }
 
+            
             dispatcherTimer.Stop();
-            isTimerSet = false; // Resetujemo postavku tajmera
+            
+            //isTimerSet = false; // Resetujemo postavku tajmera
+            timerDuration = GetRemainingTime();
+
+            string duration = timerDuration.ToString(@"hh\:mm\:ss");
+            SetTimer(duration);
+            isActive = false;
             Console.WriteLine("Tajmer je zaustavljen.");
         }
 
@@ -158,9 +172,10 @@ namespace TimerService
 
                 if (TimeSpan.TryParse(decryptedTime, out TimeSpan duration) && duration > TimeSpan.Zero)
                 {
-                    endTime = DateTime.Now.Add(duration);
+                    //endTime = DateTime.Now.Add(duration);
+                    timerDuration = duration;
                     isTimerSet = true; 
-                    Console.WriteLine($"Tajmer je postavljen na {duration}. Završava se u {endTime}.");
+                    Console.WriteLine($"Tajmer je postavljen na {duration}.");
                 }
                 else
                 {
@@ -203,12 +218,27 @@ namespace TimerService
                 return TimeSpan.Zero;
             }
 
+            if (!isActive)
+            {
+                return timerDuration;
+            }
+
             return endTime - DateTime.Now; // Vraća preostalo vreme
         }
 
         public bool IsTimerExpired()
         {
             return !dispatcherTimer.IsEnabled && !isTimerSet;
+        }
+
+        public bool IsTimerActive()
+        {
+            return dispatcherTimer.IsEnabled;
+        }
+
+        public bool IsTimerSet()
+        {
+            return isTimerSet;
         }
     }
 }

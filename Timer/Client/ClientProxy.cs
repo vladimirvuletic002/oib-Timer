@@ -38,6 +38,7 @@ namespace Client
             try
             {
                 factory.ResetTimer();
+                Console.WriteLine("Timer je uspešno resetovan!");
             }
             catch
             {
@@ -67,7 +68,23 @@ namespace Client
         {
             try
             {
-                factory.StartTimer();
+                if (!IsTimerActive())
+                {
+                    factory.StartTimer();
+                    if (!IsTimerSet())
+                    {
+                        Console.WriteLine("Tajmer nije postavljen. Koristite SetTimer pre StartTimer.");
+                    }
+                    else
+                    {
+                        Console.WriteLine("Timer je uspešno pokrenut!");
+                    }
+
+                }
+                else
+                {
+                    Console.WriteLine("Timer je vec pokrenut!");
+                }
             }
             catch 
             {
@@ -81,6 +98,7 @@ namespace Client
             try
             {
                 factory.StopTimer();
+                Console.WriteLine("Timer je zaustavljen!");
             }
             catch 
             {
@@ -139,6 +157,16 @@ namespace Client
         public TimeSpan GetRemainingTime()
         {
             return factory.GetRemainingTime();
+        }
+
+        public bool IsTimerActive()
+        {
+            return factory.IsTimerActive();
+        }
+
+        public bool IsTimerSet()
+        {
+            return factory.IsTimerSet();
         }
     }
 }
