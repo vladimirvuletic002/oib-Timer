@@ -42,7 +42,7 @@ namespace Client
             }
             catch
             {
-                Console.WriteLine("Nemate dozvolu za akciju pokretanja tajmera!");
+                Console.WriteLine("Pristup Odbijen: Nemate dozvolu za akciju pokretanja tajmera!");
             }
         }
 
@@ -60,7 +60,7 @@ namespace Client
             }
             catch 
             {
-                Console.WriteLine("Nemate dozvolu za akciju setovanja tajmera!");
+                Console.WriteLine("Pristup Odbijen: Nemate dozvolu za akciju setovanja tajmera!");
             }
         }
 
@@ -88,7 +88,7 @@ namespace Client
             }
             catch 
             {
-                Console.WriteLine("Nemate dozvolu za akciju pokretanja tajmera!");
+                Console.WriteLine("Pristup Odbijen: Nemate dozvolu za akciju pokretanja tajmera!");
             }
         }
 
@@ -102,14 +102,21 @@ namespace Client
             }
             catch 
             {
-                Console.WriteLine("Nemate dozvolu za akciju zaustavljanja tajmera!");
+                Console.WriteLine("Pristup Odbijen: Nemate dozvolu za akciju zaustavljanja tajmera!");
             }
         }
 
         public string AskForTime()
         {
-            string remainingTime = factory.GetRemainingTime().ToString(@"hh\:mm\:ss");
-            return remainingTime;
+            try
+            {
+                string remainingTime = factory.GetRemainingTime().ToString(@"hh\:mm\:ss");
+                return remainingTime;
+            }
+            catch
+            {
+                return "Timer is not started!";
+            }
 
         }
         public bool IsTimerExpired()

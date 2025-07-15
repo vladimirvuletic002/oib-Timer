@@ -27,6 +27,12 @@ namespace TimerService
             // Kreiramo ServiceHost
             ServiceHost host = new ServiceHost(typeof(TimerService));
 
+            // Dodajemo servisni endpoint
+            host.AddServiceEndpoint(typeof(ITimerService), binding, address);
+
+            host.Description.Behaviors.Remove(typeof(ServiceDebugBehavior));
+            host.Description.Behaviors.Add(new ServiceDebugBehavior() { IncludeExceptionDetailInFaults = true });
+
             // Pre nego što pozovemo host.Open(), postavljamo autorizaciju
             host.Authorization.ServiceAuthorizationManager = new CustomAuthorizationManager();
             host.Authorization.PrincipalPermissionMode = PrincipalPermissionMode.Custom;
@@ -36,8 +42,15 @@ namespace TimerService
             policies.Add(new CustomAuthorizationPolicy());
             host.Authorization.ExternalAuthorizationPolicies = policies.AsReadOnly();
 
-            // Dodajemo servisni endpoint
-            host.AddServiceEndpoint(typeof(ITimerService), binding, address);
+            
+
+            // podesavanje AutidBehaviour-a
+            ServiceSecurityAuditBehavior newAudit = new ServiceSecurityAuditBehavior();
+            newAudit.AuditLogLocation = AuditLogLocation.Application;
+            newAudit.ServiceAuthorizationAuditLevel = AuditLevel.SuccessOrFailure;
+
+            host.Description.Behaviors.Remove<ServiceSecurityAuditBehavior>();
+            host.Description.Behaviors.Add(newAudit);
 
             // Otvaramo servis
             host.Open();

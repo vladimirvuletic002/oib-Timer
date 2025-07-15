@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Manager
 {
-    class CustomPrincipal : IPrincipal
+    public class CustomPrincipal : IPrincipal
     {
         WindowsIdentity identity = null;
         public CustomPrincipal(WindowsIdentity windowsIdentity)

@@ -50,9 +50,9 @@ namespace Client
                     bool validOption = false;
                     string timeInput;
 
-                    switch (clientGroup)
-                    {
-                        case "Admin":
+                    //switch (clientGroup)
+                    //{
+                        //case "Admin":
                             Console.WriteLine();
                             Console.WriteLine("============================");
                             Console.WriteLine("1. Startuj tajmer");
@@ -120,10 +120,10 @@ namespace Client
 
                             } while (!validOption);
 
-                            break;
+                            //break;
 
 
-                        case "Modifier":
+                        /*case "Modifier":
                             Console.WriteLine();
                             Console.WriteLine("============================");
                             Console.WriteLine("1. Postavi tajmer");
@@ -219,7 +219,7 @@ namespace Client
 
                             break;
 
-                    }
+                    }*/
                 }
                     
 

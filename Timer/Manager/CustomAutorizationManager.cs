@@ -13,7 +13,22 @@ namespace Manager
         {
             CustomPrincipal principal = operationContext.ServiceSecurityContext.
                  AuthorizationContext.Properties["Principal"] as CustomPrincipal;
-            return principal.IsInRole("See");
+            bool retValue = principal.IsInRole("See");
+
+            if (!retValue)
+            {
+                try
+                {
+                    Audit.AuthorizationFailed(Formatter.ParseName(principal.Identity.Name),
+                        OperationContext.Current.IncomingMessageHeaders.Action, "Need See permission.");
+                }
+                catch (Exception e)
+                {
+                    Console.WriteLine(e.Message);
+                }
+            }
+
+            return retValue;
         }
     }
 }
