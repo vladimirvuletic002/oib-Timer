@@ -51,7 +51,16 @@ namespace Client
         {
             try
             {
-                factory.SetTimer(time);
+                byte[] key = Encoding.UTF8.GetBytes("OvoJeVrloTajniKljuc1234");
+
+                if (key.Length != 24)
+                {
+                    Array.Resize(ref key, 24);
+                }
+
+                string encryptedTime = Encrypt3DES(time, key);
+
+                factory.SetTimer(encryptedTime);
                 if (TimeSpan.TryParse(time, out TimeSpan duration) && duration > TimeSpan.Zero)
                 {
                     DateTime endTime = DateTime.Now.Add(duration);
@@ -148,6 +157,22 @@ namespace Client
             catch (Exception e)
             {
                 Console.WriteLine("Greška pri dobijanju preostalog vremena: " + e.Message);
+            }
+        }
+
+        public static string Encrypt3DES(string plainText, byte[] key)
+        {
+            using (TripleDESCryptoServiceProvider tdes = new TripleDESCryptoServiceProvider())
+            {
+                tdes.Key = key;
+                tdes.Mode = CipherMode.ECB;
+                tdes.Padding = PaddingMode.PKCS7;
+
+                ICryptoTransform encryptor = tdes.CreateEncryptor();
+                byte[] inputBytes = Encoding.UTF8.GetBytes(plainText);
+                byte[] encryptedBytes = encryptor.TransformFinalBlock(inputBytes, 0, inputBytes.Length);
+
+                return Convert.ToBase64String(encryptedBytes);
             }
         }
 

@@ -150,7 +150,18 @@ namespace TimerService
                 timerDuration = GetRemainingTime();
 
                 string duration = timerDuration.ToString(@"hh\:mm\:ss");
-                SetTimer(duration);
+
+                byte[] key = Encoding.UTF8.GetBytes("OvoJeVrloTajniKljuc1234");
+
+                if (key.Length != 24)
+                {
+                    Array.Resize(ref key, 24);
+                }
+
+                string encryptedTime = Encrypt3DES(duration, key);
+
+                //SetTimer(duration);
+                SetTimer(encryptedTime);
                 isActive = false;
                 Console.WriteLine("Tajmer je zaustavljen.");
 
@@ -264,7 +275,7 @@ namespace TimerService
         }
 
         //[PrincipalPermission(SecurityAction.Demand, Role = "Change")]
-        public void SetTimer(string inputTime)
+        public void SetTimer(string encryptedTime)
         {
             CustomPrincipal principal = Thread.CurrentPrincipal as CustomPrincipal;
             string userName = Formatter.ParseName(principal.Identity.Name);
@@ -281,7 +292,7 @@ namespace TimerService
                         Array.Resize(ref key, 24);
                     }
 
-                    string encryptedTime = Encrypt3DES(inputTime, key);
+                    //string encryptedTime = Encrypt3DES(inputTime, key);
                     Console.WriteLine($"Enkodovano vreme: {encryptedTime}");
 
                     string decryptedTime = Decrypt3DES(encryptedTime, key);
