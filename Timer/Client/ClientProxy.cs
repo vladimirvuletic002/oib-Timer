@@ -13,6 +13,8 @@ namespace Client
     {
         ITimerService factory;
 
+        private static readonly byte[] key = Encoding.UTF8.GetBytes("OvoJeVrloTajniKljuc12345");
+
         public ClientProxy(NetTcpBinding binding, string address) : base(binding, address)
         {
             Console.WriteLine("Creating channel...");
@@ -51,14 +53,14 @@ namespace Client
         {
             try
             {
-                byte[] key = Encoding.UTF8.GetBytes("OvoJeVrloTajniKljuc1234");
+                //byte[] key = Encoding.UTF8.GetBytes("OvoJeVrloTajniKljuc12345");
 
-                if (key.Length != 24)
-                {
-                    Array.Resize(ref key, 24);
-                }
+                //if (key.Length != 24)
+                //{
+                    //Array.Resize(ref key, 24);
+                //}
 
-                string encryptedTime = Encrypt3DES(time, key);
+                string encryptedTime = Encrypt3DES(time);
 
                 factory.SetTimer(encryptedTime);
                 if (TimeSpan.TryParse(time, out TimeSpan duration) && duration > TimeSpan.Zero)
@@ -160,7 +162,7 @@ namespace Client
             }
         }
 
-        public static string Encrypt3DES(string plainText, byte[] key)
+        public static string Encrypt3DES(string plainText)
         {
             using (TripleDESCryptoServiceProvider tdes = new TripleDESCryptoServiceProvider())
             {

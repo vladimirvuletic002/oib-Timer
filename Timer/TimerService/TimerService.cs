@@ -16,19 +16,27 @@ using System.Windows.Threading;
 
 namespace TimerService
 {
+    [ServiceBehavior(InstanceContextMode = InstanceContextMode.Single)]
     public class TimerService : ITimerService
     {
 
-        private DispatcherTimer dispatcherTimer; // Tajmer za praćenje intervala
+        //private DispatcherTimer dispatcherTimer; // Tajmer za praćenje intervala
+        private System.Timers.Timer timer;
         private DateTime endTime; // Vreme završetka tajmera
         private bool isTimerSet; // Oznaka da li je tajmer postavljen
         private TimeSpan timerDuration;
         private bool isActive;
 
+        private static readonly byte[] key = Encoding.UTF8.GetBytes("OvoJeVrloTajniKljuc12345");
+        private readonly object timerLock = new object();
+
         public TimerService()
         {
-            dispatcherTimer = new DispatcherTimer();
-            dispatcherTimer.Tick += OnTimerTick; // Event handler za Tick događaj
+            //dispatcherTimer = new DispatcherTimer();
+            //dispatcherTimer.Tick += OnTimerTick; 
+            timer = new System.Timers.Timer(1000); // Tick svakih 1s
+            timer.Elapsed += OnTimerTick; // Event handler za Tick događaj
+            timer.AutoReset = true;
             isTimerSet = false; // Tajmer nije postavljen prilikom inicijalizacije
             isActive = false;
         }
@@ -72,33 +80,37 @@ namespace TimerService
 
             if (Thread.CurrentPrincipal.IsInRole("StartStop"))
             {
-                if (!isTimerSet)
+                lock(timerLock)
                 {
-                    Console.WriteLine("Tajmer nije postavljen. Koristite SetTimer pre StartTimer.");
-                    return;
+                    if (!isTimerSet)
+                    {
+                        Console.WriteLine("Tajmer nije postavljen. Koristite SetTimer pre StartTimer.");
+                        return;
+                    }
+
+                    if (timer.Enabled)
+                    {
+                        Console.WriteLine("Tajmer je već pokrenut.");
+                        return;
+                    }
+
+                    //dispatcherTimer.Interval = TimeSpan.FromSeconds(1); // Tick interval
+                    //dispatcherTimer.Start();
+                    timer.Start();
+                    isActive = true;
+
+                    endTime = DateTime.Now.Add(timerDuration);
+
+                    if (timer.Enabled)
+                    {
+                        Console.WriteLine($"Tajmer je pokrenut. Završava se u {endTime}.");
+                    }
+                    else
+                    {
+                        Console.WriteLine("Greška prilikom pokretanja tajmera.");
+                    }
                 }
-
-                if (dispatcherTimer.IsEnabled)
-                {
-                    Console.WriteLine("Tajmer je već pokrenut.");
-                    return;
-                }
-
-                dispatcherTimer.Interval = TimeSpan.FromSeconds(1); // Tick interval
-                dispatcherTimer.Start();
-
-                isActive = true;
-
-                endTime = DateTime.Now.Add(timerDuration);
-
-                if (dispatcherTimer.IsEnabled)
-                {
-                    Console.WriteLine($"Tajmer je pokrenut. Završava se u {endTime}.");
-                }
-                else
-                {
-                    Console.WriteLine("Greška prilikom pokretanja tajmera.");
-                }
+                
 
                 try
                 {
@@ -137,33 +149,36 @@ namespace TimerService
 
             if (Thread.CurrentPrincipal.IsInRole("StartStop"))
             { 
-                if (!dispatcherTimer.IsEnabled)
+                lock(timerLock)
                 {
-                    Console.WriteLine("Tajmer nije aktivan.");
-                    return;
+                    if (!timer.Enabled)
+                    {
+                        Console.WriteLine("Tajmer nije aktivan.");
+                        return;
+                    }
+
+
+                    timer.Stop();
+
+                    //isTimerSet = false; // Resetujemo postavku tajmera
+                    timerDuration = GetRemainingTime();
+
+                    string duration = timerDuration.ToString(@"hh\:mm\:ss");
+
+                    //byte[] key = Encoding.UTF8.GetBytes("OvoJeVrloTajniKljuc1234");
+
+                    //if (key.Length != 24)
+                    //{
+                    //Array.Resize(ref key, 24);
+                    //}
+
+                    string encryptedTime = Encrypt3DES(duration);
+
+                    //SetTimer(duration);
+                    SetTimer(encryptedTime);
+                    isActive = false;
+                    Console.WriteLine("Tajmer je zaustavljen.");
                 }
-
-            
-                dispatcherTimer.Stop();
-            
-                //isTimerSet = false; // Resetujemo postavku tajmera
-                timerDuration = GetRemainingTime();
-
-                string duration = timerDuration.ToString(@"hh\:mm\:ss");
-
-                byte[] key = Encoding.UTF8.GetBytes("OvoJeVrloTajniKljuc1234");
-
-                if (key.Length != 24)
-                {
-                    Array.Resize(ref key, 24);
-                }
-
-                string encryptedTime = Encrypt3DES(duration, key);
-
-                //SetTimer(duration);
-                SetTimer(encryptedTime);
-                isActive = false;
-                Console.WriteLine("Tajmer je zaustavljen.");
 
                 try
                 {
@@ -201,18 +216,22 @@ namespace TimerService
 
             if (Thread.CurrentPrincipal.IsInRole("Change"))
             {
-                if (!isTimerSet)
+                lock (timerLock)
                 {
-                    Console.WriteLine("Tajmer nije postavljen.");
-                    return;
+                    if (!isTimerSet)
+                    {
+                        Console.WriteLine("Tajmer nije postavljen.");
+                        return;
+                    }
+
+                    // Zaustavljamo tajmer
+                    //dispatcherTimer.Stop();
+                    timer.Stop();
+                    isTimerSet = false; // Resetujemo status da nije postavljen
+                    endTime = DateTime.MinValue; // Postavljamo "nulu" za vreme završetka
+
+                    Console.WriteLine($"Tajmer je resetovan. Trenutno vreme završetka: {endTime}");
                 }
-
-                // Zaustavljamo tajmer
-                dispatcherTimer.Stop();
-                isTimerSet = false; // Resetujemo status da nije postavljen
-                endTime = DateTime.MinValue; // Postavljamo "nulu" za vreme završetka
-
-                Console.WriteLine($"Tajmer je resetovan. Trenutno vreme završetka: {endTime}");
 
                 try
                 {
@@ -242,7 +261,7 @@ namespace TimerService
             }
         }
 
-        public static string Encrypt3DES(string plainText, byte[] key)
+        public static string Encrypt3DES(string plainText)
         {
             using (TripleDESCryptoServiceProvider tdes = new TripleDESCryptoServiceProvider())
             {
@@ -258,7 +277,7 @@ namespace TimerService
             }
         }
 
-        public static string Decrypt3DES(string encryptedText, byte[] key)
+        public static string Decrypt3DES(string encryptedText)
         {
             using (TripleDESCryptoServiceProvider tdes = new TripleDESCryptoServiceProvider())
             {
@@ -283,36 +302,31 @@ namespace TimerService
 
             if (Thread.CurrentPrincipal.IsInRole("Change"))
             {
-                try
+                lock (timerLock)
                 {
-                    byte[] key = Encoding.UTF8.GetBytes("OvoJeVrloTajniKljuc1234");
-
-                    if (key.Length != 24)
+                    try
                     {
-                        Array.Resize(ref key, 24);
+
+                        string decryptedTime = Decrypt3DES(encryptedTime);
+
+                        if (TimeSpan.TryParse(decryptedTime, out TimeSpan duration) && duration > TimeSpan.Zero)
+                        {
+                            //endTime = DateTime.Now.Add(duration);
+                            timerDuration = duration;
+                            isTimerSet = true;
+                            Console.WriteLine($"Enkodovano vreme: {encryptedTime}");
+                            Console.WriteLine($"Tajmer je postavljen na {duration}.");
+                        }
+                        else
+                        {
+                            isTimerSet = false;
+                            Console.WriteLine("Uneta vrednost za tajmer nije validna.");
+                        }
                     }
-
-                    //string encryptedTime = Encrypt3DES(inputTime, key);
-                    Console.WriteLine($"Enkodovano vreme: {encryptedTime}");
-
-                    string decryptedTime = Decrypt3DES(encryptedTime, key);
-
-                    if (TimeSpan.TryParse(decryptedTime, out TimeSpan duration) && duration > TimeSpan.Zero)
+                    catch (Exception ex)
                     {
-                        //endTime = DateTime.Now.Add(duration);
-                        timerDuration = duration;
-                        isTimerSet = true;
-                        Console.WriteLine($"Tajmer je postavljen na {duration}.");
+                        Console.WriteLine($"Greška pri postavljanju tajmera: {ex.Message}");
                     }
-                    else
-                    {
-                        isTimerSet = false;
-                        Console.WriteLine("Uneta vrednost za tajmer nije validna.");
-                    }
-                }
-                catch (Exception ex)
-                {
-                    Console.WriteLine($"Greška pri postavljanju tajmera: {ex.Message}");
                 }
 
                 try
@@ -364,7 +378,11 @@ namespace TimerService
                     Console.WriteLine(e.Message);
                 }
 
-                return GetRemainingTime().ToString();
+                lock (timerLock)
+                {
+                    return GetRemainingTime().ToString();
+                }
+                
             }
             else
             {
@@ -389,39 +407,44 @@ namespace TimerService
             Console.Clear();
 
             // Ispisivanje preostalog vremena
-            Console.WriteLine($"Preostalo vreme: {GetRemainingTime()}");
+            Console.WriteLine($"Preostalo vreme: {GetRemainingTime().ToString(@"hh\:mm\:ss")}");
 
             if (DateTime.Now >= endTime)
             {
-                dispatcherTimer.Stop();
+                //dispatcherTimer.Stop();
+                timer.Stop();
                 isTimerSet = false; // Resetujemo postavku tajmera kada istekne
+                isActive = false;
                 Console.WriteLine("Tajmer je istekao.");
             }
         }
 
         public TimeSpan GetRemainingTime()
         {
-            if (!isTimerSet || DateTime.Now >= endTime)
+            lock (timerLock)
             {
-                return TimeSpan.Zero;
-            }
+                if (!isTimerSet || DateTime.Now >= endTime)
+                {
+                    return TimeSpan.Zero;
+                }
 
-            if (!isActive)
-            {
-                return timerDuration;
-            }
+                if (!isActive)
+                {
+                    return timerDuration;
+                }
 
-            return endTime - DateTime.Now; // Vraća preostalo vreme
+                return endTime - DateTime.Now; // Vraća preostalo vreme
+            }
         }
 
         public bool IsTimerExpired()
         {
-            return !dispatcherTimer.IsEnabled && !isTimerSet;
+            return !timer.Enabled && !isTimerSet;
         }
 
         public bool IsTimerActive()
         {
-            return dispatcherTimer.IsEnabled;
+            return timer.Enabled;
         }
 
         public bool IsTimerSet()

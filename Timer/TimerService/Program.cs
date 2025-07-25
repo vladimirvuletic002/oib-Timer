@@ -25,7 +25,9 @@ namespace TimerService
             binding.Security.Transport.ProtectionLevel = System.Net.Security.ProtectionLevel.EncryptAndSign;
 
             // Kreiramo ServiceHost
-            ServiceHost host = new ServiceHost(typeof(TimerService));
+            TimerService singletonInstance = new TimerService();
+            //ServiceHost host = new ServiceHost(typeof(TimerService));
+            ServiceHost host = new ServiceHost(singletonInstance);
 
             // Dodajemo servisni endpoint
             host.AddServiceEndpoint(typeof(ITimerService), binding, address);

@@ -120,125 +120,13 @@ namespace Client
 
                             } while (!validOption);
 
-                            //break;
-
-
-                        /*case "Modifier":
-                            Console.WriteLine();
-                            Console.WriteLine("============================");
-                            Console.WriteLine("1. Postavi tajmer");
-                            Console.WriteLine("2. Poništi tajmer");
-                            Console.WriteLine("3. Očitaj stanje tajmera");
-                            Console.WriteLine("X. Izlaz");
-                            Console.WriteLine("============================");
-
-                            do
-                            {
-                                Console.WriteLine("\nIzaberite opciju: ");
-                                option = Console.ReadLine();
-                                option = option.ToUpper();
-
-                                if (option == "1" || option == "2" || option == "3" || option == "X")
-                                {
-                                    validOption = true;
-                                    switch (option)
-                                    {
-                                        case "1":
-                                            // traziti od korisnika da postavi tajmer
-                                            Console.WriteLine("Unesite trajanje tajmera u formatu hh:mm:ss (npr. 00:02:00):");
-                                            timeInput = Console.ReadLine();
-
-                                            // postavljanje tajmera
-                                            proxy.SetTimer(timeInput);
-                                            break;
-                                        case "2":
-                                            // pitati korisnika da li zeli da ponisti tajmer (y/n)
-                                            Console.Write("Da li ste sigurni da želite da resetujete timer? (DA/NE): ");
-                                            string choice = Console.ReadLine().ToUpper();
-
-                                            if (choice.Equals("DA"))
-                                            {
-                                                proxy.ResetTimer();
-                                            }
-                                            break;
-                                        case "3":
-                                            // prikazati trenutno vreme na tajmeru u momentu ocitavanja
-                                            Console.WriteLine($"Preostalo vreme: {proxy.AskForTime()}");
-                                            break;
-                                        case "X":
-                                            Console.WriteLine("Izlaz iz programa...");
-                                            Environment.Exit(0);
-                                            break;
-                                    }
-                                }
-                                else
-                                {
-                                    validOption = false;
-                                    Console.WriteLine("\nNepoznata opcija. Pokušajte ponovo.");
-                                }
-
-                            } while (!validOption);
-
-                            break;
-
-                        case "Reader":
-                            Console.WriteLine();
-                            Console.WriteLine("============================");
-                            Console.WriteLine("1. Očitaj stanje tajmera");
-                            Console.WriteLine("X. Izlaz");
-                            Console.WriteLine("============================");
-
-                            do
-                            {
-                                Console.WriteLine("\nIzaberite opciju: ");
-                                option = Console.ReadLine();
-                                option = option.ToUpper();
-
-                                if (option == "1" || option == "X")
-                                {
-                                    validOption = true;
-                                    switch (option)
-                                    {
-                                        case "1":
-                                            // prikazati trenutno vreme na tajmeru u momentu ocitavanja
-                                            Console.WriteLine($"Preostalo vreme: {proxy.AskForTime()}");
-                                            break;
-                                        case "X":
-                                            Console.WriteLine("Izlaz iz programa...");
-                                            Environment.Exit(0);
-                                            break;
-                                    }
-                                }
-                                else
-                                {
-                                    validOption = false;
-                                    Console.WriteLine("\nNepoznata opcija. Pokušajte ponovo.");
-                                }
-
-                            } while (!validOption);
-
-                            break;
-
-                    }*/
+                           
                 }
                     
 
-                /*Console.WriteLine("Unesite trajanje tajmera u formatu hh:mm:ss (npr. 00:02:00):");
-                timeInput = Console.ReadLine();
-
-                // Postavljanje tajmera
-                proxy.SetTimer(timeInput);
-
-                // Pokretanje tajmera
-                Console.WriteLine("Pokrećemo tajmer...");
-                proxy.StartTimer();
-
-                // Logika za upravljanje tajmerom
-                ManageTimer(proxy);*/
+                
             }
 
-            //Console.WriteLine("Kraj programa");
-            //Console.ReadLine();
         }
     }
 }
